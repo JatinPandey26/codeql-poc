@@ -25,12 +25,22 @@ public class Controller {
 
     @GetMapping("/all")
     public List<Schedule> getAllSchedule(){
+
+
+        log.info("schedule fetched" + this.schedule_service.getAllSchedule());
         return this.schedule_service.getAllSchedule();
     }
 
     @PostMapping("/book")
     public String book(@RequestBody Booking booking){
+        log.info("booking created" + booking);
         this.schedule_service.book(booking);
         return "Booking Success";
+    }
+
+    @PostMapping("/update")
+    public String updateSchedule(@RequestBody int scheduleID){
+        log.info("schedule updated" + scheduleID);
+        return "schedule updated!!!";
     }
 }
