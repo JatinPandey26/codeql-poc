@@ -2,4 +2,4 @@ name: "My code scanning CodeQL config"
 
 query-filters:
   - exclude:
-      id: js/log-injection
+      id: java/log-injection
