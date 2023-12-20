@@ -37,6 +37,8 @@ public class Controller {
         log.info("booking created" + booking);
         this.schedule_service.book(booking);
         log.info("booking success" + booking);
+
+        log.info("booking created again" + booking);
         return "Booking Success";
     }
 
