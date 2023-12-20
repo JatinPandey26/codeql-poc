@@ -34,7 +34,7 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
-          queries: +security-extended  , ./custom_queries.ql
+          queries: +security-extended  , .github/codeql/custom-queries.ql
           debug: true
 #          config-file: .github/codeql/codeql-config.yml
 
