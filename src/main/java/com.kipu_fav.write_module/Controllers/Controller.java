@@ -26,7 +26,7 @@ public class Controller {
     @GetMapping("/all")
     public List<Schedule> getAllSchedule(){
 
-
+          // BAD: user password is written to debug log
         log.info("schedule fetched" + this.schedule_service.getAllSchedule());
         return this.schedule_service.getAllSchedule();
     }
