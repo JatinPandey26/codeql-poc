@@ -44,4 +44,4 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
         with:
-          fail-on-severe: false
+          fail-on-severe: false # default: true
