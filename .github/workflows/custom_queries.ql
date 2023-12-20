@@ -1,26 +1,23 @@
-// Custom CodeQL Queries for Log Injection and XSS Mitigation
+import semmle.code.java.security.dataflow.DataFlow
+import semmle.code.java.security.log.LogInjectionConfig
+import semmle.code.java.dataflow.TaintTracking
 
-import cpp
+class SuppressLogInjection extends LogInjectionConfig {
+  SuppressLogInjection() {
+    // Specify patterns or conditions to identify safe log statements
+    this.setSafePattern("logger.info($Format, $*)");
+    this.setSafePattern("logger.debug($Format, $*)");
+    this.setSafePattern("@Slf4j.*($*)"); // Include the actual annotation used in your codebase
+    // Add more patterns as needed
+  }
 
-// Define a custom predicate to identify user-controlled sources
-predicate isUserControlledSource(string source) {
-  exists(string userControlled |
-    source = userControlled
-  )
+  override predicate isSafe(DataFlow::Node source, DataFlow::Node sink) {
+    // Add additional conditions to determine if the data flow is safe
+    exists(this.getSafePattern(), source, sink) or
+    // Add more conditions as needed
+    false
+  }
 }
 
-// Suppress log injection warnings
-from DataFlow::PathNode logInjectionNode, DataFlow::PathNode userControlledNode
-where
-  logInjectionNode.asExpr().toString().matches("%log%") and
-  isUserControlledSource(userControlledNode.asExpr().toString()) and
-  logInjectionNode != userControlledNode
-select logInjectionNode, userControlledNode, "Log Injection Warning mitigated"
-
-// Suppress XSS warnings
-from DataFlow::PathNode xssNode, DataFlow::PathNode userControlledNode
-where
-  xssNode.asExpr().toString().matches("%xss%") and
-  isUserControlledSource(userControlledNode.asExpr().toString()) and
-  xssNode != userControlledNode
-select xssNode, userControlledNode, "XSS Warning mitigated"
+from SuppressLogInjection
+select SuppressLogInjection

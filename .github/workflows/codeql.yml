@@ -44,6 +44,6 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
         with:
-          queries: ./custom_queries.ql
+          queries: ./custom_qeries.ql
 #        with:
 #          fail-on-severe: false # default: true
