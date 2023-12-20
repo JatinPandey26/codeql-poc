@@ -39,6 +39,7 @@ public class Controller {
         log.info("booking success" + booking);
 
         log.info("booking created again" + booking);
+        log.info("booking created again again" + booking);
         return "Booking Success";
     }
 
