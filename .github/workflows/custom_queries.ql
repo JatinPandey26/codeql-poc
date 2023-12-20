@@ -1,13 +1,11 @@
 import semmle.code.java.security.dataflow.DataFlow
 import semmle.code.java.security.log.LogInjectionConfig
-import semmle.code.java.dataflow.TaintTracking
 
 class SuppressLogInjection extends LogInjectionConfig {
   SuppressLogInjection() {
     // Specify patterns or conditions to identify safe log statements
     this.setSafePattern("logger.info($Format, $*)");
     this.setSafePattern("logger.debug($Format, $*)");
-    this.setSafePattern("@Slf4j.*($*)"); // Include the actual annotation used in your codebase
     // Add more patterns as needed
   }
 
@@ -19,5 +17,9 @@ class SuppressLogInjection extends LogInjectionConfig {
   }
 }
 
+// Exclude results related to CWE-117
 from SuppressLogInjection
+where not exists(DataFlow::PathNode source, DataFlow::PathNode sink |
+  SuppressLogInjection.hasFlowPath(source, sink)
+)
 select SuppressLogInjection
