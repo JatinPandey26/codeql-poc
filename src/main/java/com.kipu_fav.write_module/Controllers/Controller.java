@@ -28,6 +28,7 @@ public class Controller {
 
           // BAD: user password is written to debug log
         log.info("schedule fetched" + this.schedule_service.getAllSchedule());
+        log.info("schedule fetched 0" + this.schedule_service.getAllSchedule().get(0));
         return this.schedule_service.getAllSchedule();
     }
 
