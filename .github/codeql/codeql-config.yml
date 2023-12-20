@@ -1,5 +1,5 @@
-name: "My code scanning CodeQL config"
+name: "CodeQL config"
 
 query-filters:
   - exclude:
-      id: java/log-injection
+#      id: java/log-injection
