@@ -34,10 +34,10 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: ${{ matrix.language }}
+          config-file: .github/codeql/codeql-config.yml
           queries: +security-extended
 #          ,./.github/workflows/codeql/custom-queries.qls
           debug: true
-          config-file: .github/codeql/codeql-config.yml
 
       - name: build
         run: mvn -Dmaven.test.skip package
