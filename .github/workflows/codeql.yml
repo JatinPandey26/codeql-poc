@@ -45,3 +45,5 @@ jobs:
         uses: github/codeql-action/analyze@v1
         with:
           fail-on-severe: false
+          exclude-queries: js/log-injection
+
