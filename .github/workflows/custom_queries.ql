@@ -10,12 +10,6 @@ predicate isUserControlledSource(string source) {
 }
 
 // Suppress log injection warnings
-from DataFlow::PathNode logInjectionNode, DataFlow::PathNode userControlledNode
-where
-  logInjectionNode.asExpr().toString().matches("%log%") and
-  isUserControlledSource(userControlledNode.asExpr().toString()) and
-  logInjectionNode != userControlledNode
-select logInjectionNode, userControlledNode, "Log Injection Warning mitigated"
 
 // Suppress XSS warnings
 from DataFlow::PathNode xssNode, DataFlow::PathNode userControlledNode
