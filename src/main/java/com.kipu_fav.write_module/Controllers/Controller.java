@@ -45,12 +45,12 @@ public class Controller {
 
     @PostMapping("/update")
     public String updateSchedule(@RequestBody int scheduleID){
-        String password = "Pass@0rd";
 
         // BAD: user password is written to debug log
-        log.debug("User password is "+password);
+
         log.info("schedule updated" + scheduleID);
         log.info("schedule updated again" + scheduleID);
+        log.info("schedule updated again again" + scheduleID);
         return "schedule updated!!!";
     }
 }
