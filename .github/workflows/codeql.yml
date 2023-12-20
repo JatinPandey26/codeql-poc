@@ -37,7 +37,7 @@ jobs:
           queries: +security-extended
 #          ,./.github/workflows/codeql/custom-queries.qls
           debug: true
-          config-file: .github/codeql/codeql-config.yml
+          config-file: ./codeql/codeql-config.yml
 
       - name: build
         run: mvn -Dmaven.test.skip package
