@@ -36,6 +36,7 @@ public class Controller {
     public String book(@RequestBody Booking booking){
         log.info("booking created" + booking);
         this.schedule_service.book(booking);
+        log.info("booking success" + booking);
         return "Booking Success";
     }
 
