@@ -8,6 +8,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @EnableAspectJAutoProxy
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SuppressWarnings("lgtm[java/log-injection]")
 public class WriteModuleApplication {
 
     public static void main(String[] args) {
