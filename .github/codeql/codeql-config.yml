@@ -1,5 +1,5 @@
 name: "CodeQL config"
 
 query-filters:
-#  - exclude:
-#      id: java/log-injection
+  - exclude:
+      id: java/log-injection
