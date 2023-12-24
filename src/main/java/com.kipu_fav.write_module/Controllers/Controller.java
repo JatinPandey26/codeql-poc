@@ -5,6 +5,8 @@ import com.kipu_fav.write_module.Entity.Schedule;
 import com.kipu_fav.write_module.Service.Schedule_service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +46,7 @@ public class Controller {
     }
 
     @PostMapping("/update")
-    public String updateSchedule(@RequestBody int scheduleID){
+    public ResponseEntity<String> updateSchedule(@RequestBody String scheduleID){
 
         // BAD: user password is written to debug log
 
@@ -52,6 +54,7 @@ public class Controller {
         log.info("schedule updated again" + scheduleID);
         log.info("schedule updated again again" + scheduleID);
         log.info("schedule updated again again again" + scheduleID);
-        return "schedule updated!!!";
+        return ResponseEntity.status(HttpStatus.CREATED).body("Post end point working."+ scheduleID);
+
     }
 }
