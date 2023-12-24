@@ -2,6 +2,7 @@ package com.kipu_fav.write_module.Controllers;
 
 import com.kipu_fav.write_module.Entity.Booking;
 import com.kipu_fav.write_module.Entity.Schedule;
+import com.kipu_fav.write_module.SecuredLoggerSanitizer;
 import com.kipu_fav.write_module.Service.Schedule_service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class Controller {
         log.info("schedule updated again" + scheduleID);
         log.info("schedule updated again again" + scheduleID);
         log.info("schedule updated again again again" + scheduleID);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Post end point working."+ scheduleID);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Post end point working."+ SecuredLoggerSanitizer.sanitize(scheduleID));
 
     }
 }
