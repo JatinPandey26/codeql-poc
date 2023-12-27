@@ -1,14 +1,12 @@
 package com.kipu_fav.write_module.Entity;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -23,4 +21,16 @@ public class Schedule {
     private LocalTime end_time;
     private List<String> off_days;
     private List<List<String>> off_times;
+
+    public Object getPatientId() {
+        return null;
+    }
+
+    public Boolean getSession() {
+        return null;
+    }
+
+    public Collection<?> getLocationIds() {
+        return new char[0];
+    }
 }
