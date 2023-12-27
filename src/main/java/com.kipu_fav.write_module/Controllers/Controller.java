@@ -1,5 +1,6 @@
 package com.kipu_fav.write_module.Controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.kipu_fav.write_module.Entity.Booking;
 import com.kipu_fav.write_module.Entity.Schedule;
 import com.kipu_fav.write_module.SecuredLoggerSanitizer;
@@ -57,5 +58,13 @@ public class Controller {
         log.info("schedule updated again again again" + scheduleID);
         return ResponseEntity.status(HttpStatus.CREATED).body("Post end point working."+ SecuredLoggerSanitizer.sanitize(scheduleID));
 
+    }
+
+
+
+    @GetMapping(path = "/patient/occurrences")
+    public ResponseEntity<List<JsonNode>> getAllOccurrences(Schedule searchParam) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(schedule_service.getAllOccurrences( searchParam ));
     }
 }
