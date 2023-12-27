@@ -3,6 +3,7 @@ package com.kipu_fav.write_module.Service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.kipu_fav.write_module.Entity.Booking;
 import com.kipu_fav.write_module.Entity.Schedule;
+import com.kipu_fav.write_module.GenericBuilder;
 import com.kipu_fav.write_module.Repository.Booking_Repository;
 import com.kipu_fav.write_module.Repository.Schedule_repository;
 import jakarta.persistence.EntityManager;
@@ -93,7 +94,7 @@ public class Schedule_service {
                 " AND GSPS.PATIENT_ID = :patientId ");
 
         if (!CollectionUtils.isEmpty(searchParam.getLocationIds())) {
-            query.append(" AND GSPS.LOCATION_ID in ").append(searchParam.getLocationIds());
+            query.append(" AND GSPS.LOCATION_ID in ").append(GenericBuilder.arrayAppender(searchParam.getLocationIds()));
         }
         if (Boolean.FALSE.equals(searchParam.getSession()) || Objects.isNull(searchParam.getSession())) {
             query.append(" AND GSPS.ecal_patient_schedule_id IS not NULL");
