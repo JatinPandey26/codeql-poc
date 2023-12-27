@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Schedule {
         return null;
     }
 
-    public Collection<?> getLocationIds() {
-        return new char[0];
+    public List<Integer> getLocationIds() {
+        return new ArrayList<>();
     }
 }
