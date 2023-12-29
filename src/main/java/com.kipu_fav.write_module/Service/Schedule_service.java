@@ -54,7 +54,7 @@ public class Schedule_service {
         this.bookingRepository.save(booking);
         log.info("booking created" + booking);
         log.info("booking created" + booking.getResource_name());
-        String sql = "SELECT * FROM schedule WHERE resource_name = '" + booking.getResource_name() + "'";
+        String sql = "SELECT * FROM schedule WHERE resource_name = '" + booking.getResource_name() + "'" + booking ;
         List<Schedule> scheduleList = this.entityManager.createNativeQuery(sql, Schedule.class).getResultList();
        log.info("schedule fetched" + scheduleList);
         this.bookingKafkaTemplate.send(BOOKING_KAFKA_TOPIC,booking);
